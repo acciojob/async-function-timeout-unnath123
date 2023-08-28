@@ -1,30 +1,21 @@
-//your JS code here. If required.
-
-
-
-const btn=document.getElementById("btn");
-
 async function check(inpt,dly){
-	let pr=await new Promise((resolve,reject)=>{
-		setTimeout(()=>{
-			resolve(inpt);
-		},dly);
-	})
-
-    return pr;
+    let promise= await new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve(inpt);
+        }, dly);
+    })
+   return promise;
 }
 
-//btn.addEventListener("click",check1//);
+function practise(){
+    var inputvalue = document.getElementById("text").value;
+    var delayvalue = document.getElementById("delay").value;
 
-function check1(){
-    let inputvalue=document.getElementById("text").value;
-    let delayvalue=document.getElementById("delay").value;
+    let x = check(inputvalue, delayvalue);
 
-    check(inputvalue,delayvalue).then((data)=>{
-        console.log(data)
+    x.then((data)=>{
         document.getElementById("output").innerText=data;
     })
 }
 
-
-
+document.getElementById("btn").addEventListener("click",practise);
